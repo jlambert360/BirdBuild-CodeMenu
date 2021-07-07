@@ -77,6 +77,37 @@ void MakeGCT(string TextFilePath, string OldGCTFilePath, string NewGCTFilePath)
 	NewGCTFilePtr.close();
 }
 
+bool MakeASM(string TextFilePath, string OutputAsmPath)
+{
+	string codeString;
+
+	ifstream textFile(TextFilePath);
+	if (textFile.is_open())
+	{
+		getline(textFile, codeString);
+	}
+
+	else {
+		cout << "Error: Unable to open txt file";
+		return false;
+	}
+
+	ofstream asmFile(OutputAsmPath);
+	if (asmFile.is_open())
+	{
+		for (int i = 0; i < codeString.length(); i += 16) {
+			asmFile << "* " << codeString.substr(i + 0, 8) << " " << codeString.substr(i + 8, 8) << "\n";
+		}
+
+		asmFile.close();
+	}
+
+	else {
+		cout << "Unable to open ASM file, check the OutputAsmPath";
+		return false;
+	}
+}
+
 string ReadConfigFile(int Line)
 {
 	string line;
