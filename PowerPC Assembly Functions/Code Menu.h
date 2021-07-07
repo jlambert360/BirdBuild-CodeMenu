@@ -257,10 +257,10 @@ static vector<int> Defaults;
 static string inputPath = ReadConfigFile(1);
 static string outputPath = ReadConfigFile(2);
 
-#if BUILD_TYPE == PROJECT_PLUS
-static fstream MenuFile(outputPath + "data.cmnu", fstream::out | fstream::binary);
+#if DOLPHIN_BUILD
+static fstream MenuFile(outputPath + "dnet.cmnu", fstream::out | fstream::binary);
 #else
-static fstream MenuFile(outputPath + "cm.bin", fstream::out | fstream::binary);
+static fstream MenuFile(outputPath + "data.cmnu", fstream::out | fstream::binary);
 #endif
 
 class Page;

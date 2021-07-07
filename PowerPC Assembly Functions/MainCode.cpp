@@ -18,7 +18,12 @@
 //#include "FPS Display.h"
 using namespace std;
 
-static string OutputAsmPath = outputPath + "CodeMenu.asm";
+// Set asm output path in config.cfg line 2
+#if DOLPHIN_BUILD
+	static string OutputAsmPath = outputPath + "Net-CodeMenu.asm";
+#else
+	static string OutputAsmPath = outputPath + "CodeMenu.asm";
+#endif
 
 int main()
 {

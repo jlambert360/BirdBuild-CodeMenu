@@ -227,14 +227,9 @@ void CodeMenu()
 	//main page
 	vector<Line*> MainLines;
 #if DOLPHIN_BUILD
-	MainLines.push_back(new Comment("Dolphin Code Menu"));
-	MainLines.push_back(new Comment(""));
-#endif
-
-#if BUILD_TYPE == PROJECT_PLUS
-	MainLines.push_back(new Comment("Bird Build Code Menu", &MENU_TITLE_CHECK_LOCATION));
+	MainLines.push_back(new Comment("Bird Build Netplay Code Menu", &MENU_TITLE_CHECK_LOCATION));
 #else
-	MainLines.push_back(new Comment("Legacy TE 2.5 Code Menu", &MENU_TITLE_CHECK_LOCATION));
+	MainLines.push_back(new Comment("Bird Build Code Menu", &MENU_TITLE_CHECK_LOCATION));
 #endif
 	MainLines.push_back(new Comment("Green = Comments | Blue = Changed"));
 	MainLines.push_back(new Comment("A = Enter Submenu | B = Back/Exit"));
