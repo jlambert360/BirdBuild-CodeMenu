@@ -98,8 +98,8 @@ int main()
 	//Set GCT Paths in config.cfg
 	//Input path is line 1
 	//Output path is line 2
-	string InputGCTPath = inputPath + "RSBE01.GCT";
-	string OutputGCTPath = outputPath + "RSBE01.GCT";
-	MakeGCT(TextPath, InputGCTPath, OutputGCTPath); //remove if you don't want to append code
+	//string InputGCTPath = inputPath + "RSBE01.GCT";
+	//string OutputGCTPath = outputPath + "RSBE01.GCT";
+	//MakeGCT(TextPath, InputGCTPath, OutputGCTPath); //remove if you don't want to append code
 	return 0;
 }
