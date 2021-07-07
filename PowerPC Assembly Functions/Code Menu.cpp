@@ -57,6 +57,8 @@ int P4_TAG_STRING_INDEX = -1;
 int TAG_COSTUME_TOGGLE_INDEX = -1;
 int CROWD_CHEER_TOGGLE_INDEX = -1;
 int STALING_TOGGLE_INDEX = -1;
+int STAGELIST_INDEX = -1;
+int ALL_CHARS_WALLJUMP_INDEX = -1;
 
 //constant overrides
 vector<ConstantPair> constantOverrides;
@@ -236,6 +238,7 @@ void CodeMenu()
 	constantOverrides.emplace_back(0x80B88484, SHIELD_TILT_MULTIPLIER_INDEX);
 	GameplayConstantsLines.push_back(new Comment("Other"));
 	//ValueLines.push_back(new Floating("Attacker Shield Pushback Friction Multiplier", -999, 999, 1.1, .05, SDI_DISTANCE_INDEX, "%.3f"));
+	GameplayConstantsLines.push_back(new Toggle("Universal Walljumps", false, ALL_CHARS_WALLJUMP_INDEX));
 	GameplayConstantsLines.push_back(new Floating("Walljump Horizontal Multiplier", -1, 5, 0.9, .05, WALLJUMP_HORIZONTAL_MULTIPLIER_INDEX, "%.2fx"));
 	constantOverrides.emplace_back(0x80B88420, WALLJUMP_HORIZONTAL_MULTIPLIER_INDEX);
 	GameplayConstantsLines.push_back(new Floating("Wall Bounce Knockback Multiplier", -1, 5, 0.80, .05, WALL_BOUNCE_KNOCKBACK_MULTIPLIER_INDEX, "%.2fx"));
@@ -274,6 +277,11 @@ void CodeMenu()
 #endif
 	
 	MainLines.push_back(&DebugMode.CalledFromLine);
+#if DOLPHIN_BUILD
+	MainLines.push_back(new Selection("Stagelist", { "Middle 3", "PMBR (lol)", "Singles (Dubs Stages)", "Doubles" }, 0, STAGELIST_INDEX));
+#else
+	MainLines.push_back(new Selection("Stagelist", { "Middle 3", "PMBR (lol)", "Singles (Dubs Stages)", "Doubles" }, 1, STAGELIST_INDEX));
+#endif
 	//	MainLines.push_back(new Selection("Endless Friendlies", { "OFF", "Same Stage", "Random Stage", "Round Robin" }, 0, INFINITE_FRIENDLIES_INDEX));
 	//	MainLines.push_back(new Selection("Endless Friendlies Mode", { "OFF", "All Stay", "Winner Stays", "Loser Stays", "Rotation"}, 0, ENDLESS_FRIENDLIES_MODE_INDEX));
 	MainLines.push_back(new Selection("Endless Friendlies", { "OFF", "ON", "ON (1v1)"}, 0, ENDLESS_FRIENDLIES_MODE_INDEX));
@@ -758,6 +766,13 @@ void CreateMenu(Page MainPage)
 	AddValueToByteArray(DISABLE_DPAD_P2_INDEX, Header); //P2
 	AddValueToByteArray(DISABLE_DPAD_P3_INDEX, Header); //P3
 	AddValueToByteArray(DISABLE_DPAD_P4_INDEX, Header); //P4
+
+	//Stagelist Looter
+	AddValueToByteArray(STAGELIST_INDEX, Header);
+
+	//Universal walljump
+	AddValueToByteArray(ALL_CHARS_WALLJUMP_INDEX, Header);
+
 	//Endless Rotation player queue
 	AddValueToByteArray(0, Header);
 	AddValueToByteArray(0, Header);
@@ -857,6 +872,19 @@ void constantOverride() {
 		SetRegister(reg2, x.address);
 		STW(reg1, reg2, 0);
 	}
+
+	// Universal walljumping - works, but match must be restarted. Attempted writing to 0x80FC15C0 and 0x80FC15D8, but got same result
+	LoadWordToReg(reg1, ALL_CHARS_WALLJUMP_INDEX + Line::VALUE);
+	SetRegister(reg2, 0x80FAA9A0); //walljump comparison
+	// Universal Walljump: If set, write 1
+	If(reg1, GREATER_I, 0); {
+		SetRegister(reg1, 1);	// word 1 @ $80FAA9A0, everyone can walljump
+	}
+	// If not set, write 2
+	Else(); {
+		SetRegister(reg1, 2);  // word 2 @ $80FAA9A0, normal walljump mechanics
+	} EndIf();
+	STW(reg1, reg2, 0);
 
 	ASMEnd(0x2c000000); //cmpwi, r0, 0
 }
