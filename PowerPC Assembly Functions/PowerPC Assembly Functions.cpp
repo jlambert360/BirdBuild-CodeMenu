@@ -95,7 +95,10 @@ bool MakeASM(string TextFilePath, string OutputAsmPath)
 	ofstream asmFile(OutputAsmPath);
 	if (asmFile.is_open())
 	{
+		asmFile << "Code Menu [Fracture]\n";
 		for (int i = 0; i < codeString.length(); i += 16) {
+			if (codeString.substr(i + 0, 16) == "4200000092000000")
+				asmFile << "\nTag Based Costumes [Fracture]\n";
 			asmFile << "* " << codeString.substr(i + 0, 8) << " " << codeString.substr(i + 8, 8) << "\n";
 		}
 
