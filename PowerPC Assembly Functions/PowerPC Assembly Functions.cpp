@@ -77,6 +77,26 @@ void MakeGCT(string TextFilePath, string OldGCTFilePath, string NewGCTFilePath)
 	NewGCTFilePtr.close();
 }
 
+string ReadConfigFile(int Line)
+{
+	string line;
+	ifstream configFile("../config.cfg");
+	if (configFile.is_open())
+	{
+		while (!configFile.eof())
+		{
+			for (int linenum = 0; getline(configFile, line) && linenum < Line; linenum++)
+				if (linenum == Line - 1)
+					configSetting = line;
+		}
+		configFile.close();
+	}
+
+	else cout << "Unable to open config file";
+
+	return configSetting;
+}
+
 int GetHexFromFloat(float Value)
 {
 	int *b = (int *)&Value;

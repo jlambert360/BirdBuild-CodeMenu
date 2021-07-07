@@ -260,6 +260,7 @@ static int LabelIndex = 0;
 static int JumpLabelNumArray[MAX_JUMPS] = {};
 static int JumpFromArray[MAX_JUMPS] = {};
 static int JumpIndex = 0;
+static string configSetting;
 static vector<int> FPPushRecords;
 static vector<int> CounterLoppRecords;
 static vector<int> StackIteratorRecords;
@@ -270,6 +271,8 @@ void CodeStart(string FilePath);
 void CodeEnd();
 
 void MakeGCT(string TextFilePath, string OldGCTFilePath, string NewGCTFilePath);
+
+string ReadConfigFile(int Line);
 
 int GetHexFromFloat(float Value);
 int GetShiftNum(int endPos);

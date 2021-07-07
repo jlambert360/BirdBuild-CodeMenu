@@ -253,10 +253,14 @@ static int CurrentOffset = START_OF_CODE_MENU;
 #define FRAMES_WAITED_DURING_SLOW_MOTION 3
 
 static vector<int> Defaults;
+
+static string inputPath = ReadConfigFile(1);
+static string outputPath = ReadConfigFile(2);
+
 #if BUILD_TYPE == PROJECT_PLUS
-static fstream MenuFile("C:\\Users\\johno\\Documents\\Modding\\Dolphin\\SD_Raws\\data.cmnu", fstream::out | fstream::binary);
+static fstream MenuFile(outputPath + "data.cmnu", fstream::out | fstream::binary);
 #else
-static fstream MenuFile("C:\\Users\\johno\\Documents\\Modding\\Dolphin\\SD_Raws\\cm.bin", fstream::out | fstream::binary);
+static fstream MenuFile(outputPath + "cm.bin", fstream::out | fstream::binary);
 #endif
 
 class Page;
