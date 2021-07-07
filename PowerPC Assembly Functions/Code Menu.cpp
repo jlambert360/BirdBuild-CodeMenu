@@ -232,7 +232,7 @@ void CodeMenu()
 #endif
 
 #if BUILD_TYPE == PROJECT_PLUS
-	MainLines.push_back(new Comment("Project+ Code Menu", &MENU_TITLE_CHECK_LOCATION));
+	MainLines.push_back(new Comment("Bird Build Code Menu", &MENU_TITLE_CHECK_LOCATION));
 #else
 	MainLines.push_back(new Comment("Legacy TE 2.5 Code Menu", &MENU_TITLE_CHECK_LOCATION));
 #endif
@@ -953,8 +953,8 @@ void ControlCodeMenu()
 
 	int NotLoaded = GetNextLabel();
 #if BUILD_TYPE == PROJECT_PLUS
-	LoadHalfToReg(Reg1, MENU_TITLE_CHECK_LOCATION + 7 + Line::COMMENT_LINE_TEXT_START);
-	If(Reg1, NOT_EQUAL_I_L, 0x2B20); //+
+	LoadHalfToReg(Reg1, MENU_TITLE_CHECK_LOCATION + Line::COMMENT_LINE_TEXT_START);
+	If(Reg1, NOT_EQUAL_I_L, 0x4269); //Bi
 	{
 		JumpToLabel(NotLoaded);
 	}EndIf();
