@@ -59,6 +59,10 @@ extern int TAG_COSTUME_TOGGLE_INDEX;
 extern int CROWD_CHEER_TOGGLE_INDEX;
 extern int STAGELIST_INDEX;
 extern int ALL_CHARS_WALLJUMP_INDEX;
+extern int ALC_P1_INDEX;
+extern int ALC_P2_INDEX;
+extern int ALC_P3_INDEX;
+extern int ALC_P4_INDEX;
 
 struct ConstantPair {
 	int address;
@@ -199,7 +203,12 @@ static const int STAGELIST_LOC = SHOULD_RESET_STAGE_COLLISIONS_FLAG_LOC + 4; //4
 
 static const int ALL_CHARS_WALLJUMP_LOC = STAGELIST_LOC + 4; //4
 
-static const int DRAW_SETTINGS_BUFFER_LOC = ALL_CHARS_WALLJUMP_LOC + 4; //0x200
+static const int ALC_P1_LOC = ALL_CHARS_WALLJUMP_LOC + 4; //4
+static const int ALC_P2_LOC = ALC_P1_LOC + 4; //4
+static const int ALC_P3_LOC = ALC_P2_LOC + 4; //4
+static const int ALC_P4_LOC = ALC_P3_LOC + 4; //4
+
+static const int DRAW_SETTINGS_BUFFER_LOC = ALC_P4_LOC + 4; //0x200
 
 static const int START_OF_CODE_MENU = DRAW_SETTINGS_BUFFER_LOC + 0x200;
 
