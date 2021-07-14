@@ -214,41 +214,23 @@ checkForAutoLcancel:
   ori r6, r6, CodeMenuHeader    #Load Code Menu Header
   lwzx r6, r6, r11
   lbz r11, 0xB(r6)     #Load Option Selection
-  cmpwi r11, 0x1
+  cmpwi r11, 0x1       #If (CodeMenuVar == 1), apply red flash on miss
   beq applyLCancelRedFlash
-  cmpwi r11, 0x2
-  beq applyModifiedLCancelFlash
-  lis r11, 0x9017
-  ori r11, r11, 0xF36B
+  lis r11, 0x9017           #\ Check if universal ALC toggle is on,
+  ori r11, r11, 0xF36B      #/ and skip red flash check if so
   lbz r11, 0(r11)
-  cmpwi r11, 0x1
+  cmpwi r11, 0x1       #If (CodeMenuVar == 1), apply ALC
   beq applyLcancel  #Skip applying fail flash if universal option is on
-  lhz r11, 0 (r6)
-  add r6, r11, r6   #Load up next toggle (Modifier)
   lhz r11, 0 (r6)
   add r6, r11, r6   #Load up next toggle (Red Flash on L Cancel)
   lbz r11, 0xB(r6)     #Load Option Selection
-  cmpwi r11, 0x1
+  cmpwi r11, 0x1       #If (CodeMenuVar == 1), apply red flash on miss
   beq applyRedFlashNoCancel
   b calcStat
 
 applyRedFlashNoCancel:
   lis r0, 0xFF00      #Red Flash
   ori r0, r0, 0x0080
-  bl 0x4  #set LR
-  mflr r11 #Store Link Register in R11
-  addi r11, r11, 0xC
-  bl applyFlash
-  li r6, 0
-  b calcStat
-
-applyModifiedLCancelFlash:
-  lhz r11, 0 (r6)
-  add r6, r11, r6
-  lfs f0, 0x8 (r6)
-  fmuls f30, f30, f0
-  lis r0, 0x8000      #Purple Flash for Modified Values
-  ori r0, r0, 0x8080
   bl 0x4  #set LR
   mflr r11 #Store Link Register in R11
   addi r11, r11, 0xC

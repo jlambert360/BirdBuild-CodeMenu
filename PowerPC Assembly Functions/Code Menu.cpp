@@ -128,8 +128,7 @@ void CodeMenu()
 	P1Lines.push_back(new Floating("Select Percent", 0, 999, 0, 1, PERCENT_SELECT_VALUE_P1_INDEX, "%.0f%%"));
 	P1Lines.push_back(new Toggle("Press DPad to select percent", false, PERCENT_SELECT_ACTIVATOR_P1_INDEX));
 	P1Lines.push_back(new Toggle("Disable DPad", false, DISABLE_DPAD_P1_INDEX));
-	P1Lines.push_back(new Selection("Automatic L-Cancelling", { "OFF", "ON", "Modified" }, 0, ALC_P1_INDEX));
-	P1Lines.push_back(new Floating("ALC Modifier", 0.099, 3, 0.5, 0.05, EXTERNAL_INDEX, "%.2fX"));
+	P1Lines.push_back(new Selection("Automatic L-Cancelling", { "OFF", "ON" }, 0, ALC_P1_INDEX));
 	P1Lines.push_back(new Toggle("Red Flash on L-Cancel Failure", false, EXTERNAL_INDEX));
 
 	//for (auto x : P1Lines) {
@@ -148,8 +147,7 @@ void CodeMenu()
 	P2Lines.push_back(new Floating("Select Percent", 0, 999, 0, 1, PERCENT_SELECT_VALUE_P2_INDEX, "%.0f%%"));
 	P2Lines.push_back(new Toggle("Press DPad to select percent", false, PERCENT_SELECT_ACTIVATOR_P2_INDEX));
 	P2Lines.push_back(new Toggle("Disable DPad", false, DISABLE_DPAD_P2_INDEX));
-	P2Lines.push_back(new Selection("Automatic L-Cancelling", { "OFF", "ON", "Modified" }, 0, ALC_P2_INDEX));
-	P2Lines.push_back(new Floating("ALC Modifier", 0.099, 3, 0.5, 0.05, EXTERNAL_INDEX, "%.2fX"));
+	P2Lines.push_back(new Selection("Automatic L-Cancelling", { "OFF", "ON" }, 0, ALC_P2_INDEX));
 	P2Lines.push_back(new Toggle("Red Flash on L-Cancel Failure", false, EXTERNAL_INDEX));
 	Page P2("Player 2 Codes", P2Lines);
 
@@ -164,8 +162,7 @@ void CodeMenu()
 	P3Lines.push_back(new Floating("Select Percent", 0, 999, 0, 1, PERCENT_SELECT_VALUE_P3_INDEX, "%.0f%%"));
 	P3Lines.push_back(new Toggle("Press DPad to select percent", false, PERCENT_SELECT_ACTIVATOR_P3_INDEX));
 	P3Lines.push_back(new Toggle("Disable DPad", false, DISABLE_DPAD_P3_INDEX));
-	P3Lines.push_back(new Selection("Automatic L-Cancelling", { "OFF", "ON", "Modified" }, 0, ALC_P3_INDEX));
-	P3Lines.push_back(new Floating("ALC Modifier", 0.099, 3, 0.5, 0.05, EXTERNAL_INDEX, "%.2fX"));
+	P3Lines.push_back(new Selection("Automatic L-Cancelling", { "OFF", "ON" }, 0, ALC_P3_INDEX));
 	P3Lines.push_back(new Toggle("Red Flash on L-Cancel Failure", false, EXTERNAL_INDEX));
 	Page P3("Player 3 Codes", P3Lines);
 
@@ -180,8 +177,7 @@ void CodeMenu()
 	P4Lines.push_back(new Floating("Select Percent", 0, 999, 0, 1, PERCENT_SELECT_VALUE_P4_INDEX, "%.0f%%"));
 	P4Lines.push_back(new Toggle("Press DPad to select percent", false, PERCENT_SELECT_ACTIVATOR_P4_INDEX));
 	P4Lines.push_back(new Toggle("Disable DPad", false, DISABLE_DPAD_P4_INDEX));
-	P4Lines.push_back(new Selection("Automatic L-Cancelling", { "OFF", "ON", "Modified" }, 0, ALC_P4_INDEX));
-	P4Lines.push_back(new Floating("ALC Modifier", 0.099, 3, 0.5, 0.05, EXTERNAL_INDEX, "%.2fX"));
+	P4Lines.push_back(new Selection("Automatic L-Cancelling", { "OFF", "ON" }, 0, ALC_P4_INDEX));
 	P4Lines.push_back(new Toggle("Red Flash on L-Cancel Failure", false, EXTERNAL_INDEX));
 	Page P4("Player 4 Codes", P4Lines);
 
