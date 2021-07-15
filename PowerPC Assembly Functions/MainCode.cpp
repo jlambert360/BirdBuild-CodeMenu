@@ -20,9 +20,9 @@ using namespace std;
 
 // Set asm output path in config.cfg line 2
 #if DOLPHIN_BUILD
-	static string OutputAsmPath = outputPath + "Net-CodeMenu.asm";
+	static string OutputAsmPath = outputPath + "Source/Netplay/Net-CodeMenu.asm";
 #else
-	static string OutputAsmPath = outputPath + "CodeMenu.asm";
+	static string OutputAsmPath = outputPath + "Source/Project+/CodeMenu.asm";
 #endif
 
 int main()
@@ -96,9 +96,9 @@ int main()
 	MakeASM(TextPath, OutputAsmPath);
 
 	//Set GCT Paths in config.cfg
-	//Input path is line 1
+	//Build path is line 1
 	//Output path is line 2
-	//string InputGCTPath = inputPath + "RSBE01.GCT";
+	//string InputGCTPath = buildPath + "RSBE01.GCT";
 	//string OutputGCTPath = outputPath + "RSBE01.GCT";
 	//MakeGCT(TextPath, InputGCTPath, OutputGCTPath); //remove if you don't want to append code
 	return 0;

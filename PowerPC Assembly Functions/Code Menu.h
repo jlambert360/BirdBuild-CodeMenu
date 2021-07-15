@@ -269,13 +269,13 @@ static int CurrentOffset = START_OF_CODE_MENU;
 
 static vector<int> Defaults;
 
-static string inputPath = ReadConfigFile(1);
+static string buildPath = ReadConfigFile(1);
 static string outputPath = ReadConfigFile(2);
 
 #if DOLPHIN_BUILD
-static fstream MenuFile(outputPath + "dnet.cmnu", fstream::out | fstream::binary);
+static fstream MenuFile(outputPath + "pf/menu3/dnet.cmnu", fstream::out | fstream::binary);
 #else
-static fstream MenuFile(outputPath + "data.cmnu", fstream::out | fstream::binary);
+static fstream MenuFile(outputPath + "pf/menu3/data.cmnu", fstream::out | fstream::binary);
 #endif
 
 class Page;
