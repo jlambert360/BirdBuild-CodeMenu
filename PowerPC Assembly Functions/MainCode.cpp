@@ -20,9 +20,9 @@ using namespace std;
 
 // Set asm output path in config.cfg line 2
 #if DOLPHIN_BUILD
-	static string OutputAsmPath = outputPath + "Source/Netplay/Net-CodeMenu.asm";
+	static string OutputAsmPath = buildPath + "Source/Netplay/Net-CodeMenu.asm";
 #else
-	static string OutputAsmPath = outputPath + "Source/Project+/CodeMenu.asm";
+	static string OutputAsmPath = buildPath + "Source/Project+/CodeMenu.asm";
 #endif
 
 int main()
