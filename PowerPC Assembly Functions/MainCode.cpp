@@ -25,6 +25,9 @@ using namespace std;
 	static string OutputAsmPath = buildPath + "Source/Project+/CodeMenu.asm";
 #endif
 
+// Path to a script to update a virtual SD
+	static string sdScriptPath = scriptsPath + "CreateSD.bat";
+
 int main()
 {
 	string TextPath = outputPath + "ASM.txt";
@@ -94,6 +97,11 @@ int main()
 	CodeEnd();
 
 	MakeASM(TextPath, OutputAsmPath);
+
+	if (UPDATE_SD)
+	{
+		system(("\"\"" + sdScriptPath + "\"\"").c_str());
+	}
 
 	//Set GCT Paths in config.cfg
 	//Build path is line 1

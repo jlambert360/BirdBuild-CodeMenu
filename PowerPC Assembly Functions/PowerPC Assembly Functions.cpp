@@ -119,7 +119,7 @@ string ReadConfigFile(int Line)
 	{
 		while (!configFile.eof())
 		{
-			for (int linenum = 0; getline(configFile, line) && linenum < Line; linenum++)
+			for (int linenum = 0; getline(configFile, line) && linenum <= Line; linenum++)
 				if (linenum == Line - 1)
 					configSetting = line;
 		}
