@@ -291,9 +291,9 @@ void CodeMenu()
 	
 	MainLines.push_back(&DebugMode.CalledFromLine);
 #if DOLPHIN_BUILD
-	MainLines.push_back(new Selection("Stagelist", { "Middle 3", "PMBR (lol)", "Singles (Dubs Stages)", "Doubles" }, 0, STAGELIST_INDEX));
+	MainLines.push_back(new Selection("Stagelist", { "Middle 3", "PMBR (lol)", "King Build Singles", "King Build Doubles" }, 0, STAGELIST_INDEX));
 #else
-	MainLines.push_back(new Selection("Stagelist", { "Middle 3", "PMBR (lol)", "Singles (Dubs Stages)", "Doubles" }, 1, STAGELIST_INDEX));
+	MainLines.push_back(new Selection("Stagelist", { "Middle 3", "PMBR (lol)", "King Build Singles", "King Build Doubles" }, 1, STAGELIST_INDEX));
 #endif
 	constantOverrides.emplace_back(0x80523400, STAGELIST_INDEX);
 	//	MainLines.push_back(new Selection("Endless Friendlies", { "OFF", "Same Stage", "Random Stage", "Round Robin" }, 0, INFINITE_FRIENDLIES_INDEX));
