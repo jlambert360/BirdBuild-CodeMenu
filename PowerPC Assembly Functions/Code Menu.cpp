@@ -275,8 +275,10 @@ void CodeMenu()
 
 	//main page
 	vector<Line*> MainLines;
-#if DOLPHIN_BUILD
+#if DOLPHIN_BUILD && TOURNAMENT_BUILD == false
 	MainLines.push_back(new Comment("Bird Build Netplay Code Menu", &MENU_TITLE_CHECK_LOCATION));
+#elif DOLPHIN_BUILD && TOURNAMENT_BUILD
+	MainLines.push_back(new Comment("Bird Build Tournament Code Menu", &MENU_TITLE_CHECK_LOCATION));
 #else
 	MainLines.push_back(new Comment("Bird Build Code Menu", &MENU_TITLE_CHECK_LOCATION));
 #endif

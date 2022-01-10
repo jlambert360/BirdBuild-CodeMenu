@@ -69,8 +69,10 @@ void LoadCodeMenu()
 	int reg1 = 31;
 	int reg2 = 30;
 
-#if DOLPHIN_BUILD
+#if DOLPHIN_BUILD && TOURNAMENT_BUILD == false
 	string codeMenuLocation = "/menu3/dnet.cmnu";
+#elif DOLPHIN_BUILD && TOURNAMENT_BUILD
+	string codeMenuLocation = "/menu3/tnet.cmnu";
 #else
 	string codeMenuLocation = "/menu3/data.cmnu";
 #endif
