@@ -275,6 +275,8 @@ static string scriptsPath = ReadConfigFile(3);
 
 #if DOLPHIN_BUILD && TOURNAMENT_BUILD == false
 static fstream MenuFile(buildPath + "pf/menu3/dnet.cmnu", fstream::out | fstream::binary);
+#elif DOLPHIN_BUILD == false && TOURNAMENT_BUILD
+static fstream MenuFile(buildPath + "pf/menu3/tdata.cmnu", fstream::out | fstream::binary);
 #elif DOLPHIN_BUILD && TOURNAMENT_BUILD
 static fstream MenuFile(buildPath + "pf/menu3/tnet.cmnu", fstream::out | fstream::binary);
 #else

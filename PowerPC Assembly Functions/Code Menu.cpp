@@ -277,7 +277,7 @@ void CodeMenu()
 	vector<Line*> MainLines;
 #if DOLPHIN_BUILD && TOURNAMENT_BUILD == false
 	MainLines.push_back(new Comment("Bird Build Netplay Code Menu", &MENU_TITLE_CHECK_LOCATION));
-#elif DOLPHIN_BUILD && TOURNAMENT_BUILD
+#elif TOURNAMENT_BUILD
 	MainLines.push_back(new Comment("Bird Build Tournament Code Menu", &MENU_TITLE_CHECK_LOCATION));
 #else
 	MainLines.push_back(new Comment("Bird Build Code Menu", &MENU_TITLE_CHECK_LOCATION));
@@ -292,10 +292,14 @@ void CodeMenu()
 #endif
 	
 	MainLines.push_back(&DebugMode.CalledFromLine);
-#if DOLPHIN_BUILD
-	MainLines.push_back(new Selection("Stagelist", { "Middle 3", "PMBR (lol)", "King Build Singles", "King Build Doubles" }, 2, STAGELIST_INDEX));
+#if DOLPHIN_BUILD && TOURNAMENT_BUILD == false
+	MainLines.push_back(new Selection("Stagelist", { "Middle 3", "PMBR", "King Build Singles", "King Build Doubles" }, 0, STAGELIST_INDEX));
+#elif DOLPHIN_BUILD && TOURNAMENT_BUILD
+	MainLines.push_back(new Selection("Stagelist", { "Middle 3", "PMBR", "King Build Singles", "King Build Doubles" }, 2, STAGELIST_INDEX));
+#elif DOLPHIN_BUILD == false && TOURNAMENT_BUILD
+	MainLines.push_back(new Selection("Stagelist", { "Middle 3", "PMBR", "King Build Singles", "King Build Doubles" }, 2, STAGELIST_INDEX));
 #else
-	MainLines.push_back(new Selection("Stagelist", { "Middle 3", "PMBR (lol)", "King Build Singles", "King Build Doubles" }, 2, STAGELIST_INDEX));
+	MainLines.push_back(new Selection("Stagelist", { "Middle 3", "PMBR", "King Build Singles", "King Build Doubles" }, 0, STAGELIST_INDEX));
 #endif
 	constantOverrides.emplace_back(0x80523400, STAGELIST_INDEX);
 	//	MainLines.push_back(new Selection("Endless Friendlies", { "OFF", "Same Stage", "Random Stage", "Round Robin" }, 0, INFINITE_FRIENDLIES_INDEX));

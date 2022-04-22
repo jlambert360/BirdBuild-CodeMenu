@@ -22,7 +22,7 @@ typedef unsigned char u8;
 #define BUILD_TYPE PROJECT_PLUS
 #define EON_DEBUG_BUILD false
 #define TOURNAMENT_ADDITION_BUILD false
-#define DOLPHIN_BUILD true
+#define DOLPHIN_BUILD false
 #define TOURNAMENT_BUILD true
 #define UPDATE_SD false
 

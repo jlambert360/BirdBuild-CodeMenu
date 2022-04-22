@@ -71,6 +71,8 @@ void LoadCodeMenu()
 
 #if DOLPHIN_BUILD && TOURNAMENT_BUILD == false
 	string codeMenuLocation = "/menu3/dnet.cmnu";
+#elif DOLPHIN_BUILD == false && TOURNAMENT_BUILD
+	string codeMenuLocation = "/menu3/tdata.cmnu";
 #elif DOLPHIN_BUILD && TOURNAMENT_BUILD
 	string codeMenuLocation = "/menu3/tnet.cmnu";
 #else
