@@ -275,13 +275,7 @@ void CodeMenu()
 
 	//main page
 	vector<Line*> MainLines;
-#if DOLPHIN_BUILD && TOURNAMENT_BUILD == false
-	MainLines.push_back(new Comment("Bird Build Netplay Code Menu", &MENU_TITLE_CHECK_LOCATION));
-#elif TOURNAMENT_BUILD
-	MainLines.push_back(new Comment("Bird Build Tournament Code Menu", &MENU_TITLE_CHECK_LOCATION));
-#else
-	MainLines.push_back(new Comment("Bird Build Code Menu", &MENU_TITLE_CHECK_LOCATION));
-#endif
+	MainLines.push_back(new Comment("Project+ Netplay Code Menu", &MENU_TITLE_CHECK_LOCATION));
 
 	MainLines.push_back(new Comment("X = Reset Selection | Y = Reset Page"));
 	MainLines.push_back(new Comment("Hold Z = Scroll Faster"));
@@ -292,16 +286,10 @@ void CodeMenu()
 #endif
 	
 	MainLines.push_back(&DebugMode.CalledFromLine);
-#if DOLPHIN_BUILD && TOURNAMENT_BUILD == false
-	MainLines.push_back(new Selection("Stagelist", { "Middle 3", "PMBR", "King Build Singles", "King Build Doubles" }, 0, STAGELIST_INDEX));
-#elif DOLPHIN_BUILD && TOURNAMENT_BUILD
-	MainLines.push_back(new Selection("Stagelist", { "Middle 3", "PMBR", "King Build Singles", "King Build Doubles" }, 2, STAGELIST_INDEX));
-#elif DOLPHIN_BUILD == false && TOURNAMENT_BUILD
-	MainLines.push_back(new Selection("Stagelist", { "Middle 3", "PMBR", "King Build Singles", "King Build Doubles" }, 2, STAGELIST_INDEX));
-#else
-	MainLines.push_back(new Selection("Stagelist", { "Middle 3", "PMBR", "King Build Singles", "King Build Doubles" }, 0, STAGELIST_INDEX));
-#endif
+
+	MainLines.push_back(new Selection("Stagelist", { "Theatre", "PMBR", "ILPM", "NY", "MA"}, 0, STAGELIST_INDEX));
 	constantOverrides.emplace_back(0x80523400, STAGELIST_INDEX);
+
 	//	MainLines.push_back(new Selection("Endless Friendlies", { "OFF", "Same Stage", "Random Stage", "Round Robin" }, 0, INFINITE_FRIENDLIES_INDEX));
 	//	MainLines.push_back(new Selection("Endless Friendlies Mode", { "OFF", "All Stay", "Winner Stays", "Loser Stays", "Rotation"}, 0, ENDLESS_FRIENDLIES_MODE_INDEX));
 	MainLines.push_back(new Selection("Endless Friendlies", { "OFF", "ON", "ON (1v1)"}, 0, ENDLESS_FRIENDLIES_MODE_INDEX));
@@ -1005,7 +993,7 @@ void ControlCodeMenu()
 	//Prevents Code Menu from booting if it doesn't match a specified string (lol)
 #if BUILD_TYPE == PROJECT_PLUS
 	LoadHalfToReg(Reg1, MENU_TITLE_CHECK_LOCATION + 7 + Line::COMMENT_LINE_TEXT_START);
-	If(Reg1, NOT_EQUAL_I_L, 0x696c); //il
+	If(Reg1, NOT_EQUAL_I_L, 0x2B20); //+
 	{
 		JumpToLabel(NotLoaded);
 	}EndIf();
