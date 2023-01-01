@@ -293,13 +293,13 @@ void CodeMenu()
 	
 	MainLines.push_back(&DebugMode.CalledFromLine);
 #if DOLPHIN_BUILD && TOURNAMENT_BUILD == false
-	MainLines.push_back(new Selection("Stagelist", { "Middle 3", "PMBR", "King Build Singles", "King Build Doubles" }, 0, STAGELIST_INDEX));
+	MainLines.push_back(new Selection("Stagelist", { "Middle 3", "PMBR", "King Build Singles", "King Build Doubles", "EC Singles" }, 0, STAGELIST_INDEX));
 #elif DOLPHIN_BUILD && TOURNAMENT_BUILD
-	MainLines.push_back(new Selection("Stagelist", { "Middle 3", "PMBR", "King Build Singles", "King Build Doubles" }, 2, STAGELIST_INDEX));
+	MainLines.push_back(new Selection("Stagelist", { "Middle 3", "PMBR", "King Build Singles", "King Build Doubles", "EC Singles" }, 4, STAGELIST_INDEX));
 #elif DOLPHIN_BUILD == false && TOURNAMENT_BUILD
-	MainLines.push_back(new Selection("Stagelist", { "Middle 3", "PMBR", "King Build Singles", "King Build Doubles" }, 2, STAGELIST_INDEX));
+	MainLines.push_back(new Selection("Stagelist", { "Middle 3", "PMBR", "King Build Singles", "King Build Doubles", "EC Singles" }, 4, STAGELIST_INDEX));
 #else
-	MainLines.push_back(new Selection("Stagelist", { "Middle 3", "PMBR", "King Build Singles", "King Build Doubles" }, 0, STAGELIST_INDEX));
+	MainLines.push_back(new Selection("Stagelist", { "Middle 3", "PMBR", "King Build Singles", "King Build Doubles", "EC Singles" }, 1, STAGELIST_INDEX));
 #endif
 	constantOverrides.emplace_back(0x80523400, STAGELIST_INDEX);
 	//	MainLines.push_back(new Selection("Endless Friendlies", { "OFF", "Same Stage", "Random Stage", "Round Robin" }, 0, INFINITE_FRIENDLIES_INDEX));
